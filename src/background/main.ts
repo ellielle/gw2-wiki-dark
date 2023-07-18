@@ -1,6 +1,6 @@
 import { isFirefox } from "~/env";
 import { onMessage, sendMessage } from "webext-bridge/background";
-import type { Tabs } from "webextension-polyfill";
+// import type { Tabs } from "webextension-polyfill";
 
 // only on dev mode
 if (import.meta.hot) {
@@ -10,26 +10,16 @@ if (import.meta.hot) {
   import("./contentScriptHMR");
 }
 
-// TODO Action > left click: toggle for all tabs 
+type IsDarkModeEnabled = { dark: boolean };
+
+// TODO Action > left click: toggle for all tabs
 // TODO middle click: toggle for current tab
 // TODO right click: popup menu with idk what yet, leave out until implemented
 
 browser.runtime.onInstalled.addListener(async (): Promise<void> => {
-  const gw2WikiTabs = await browser.tabs.query({ url: "*://*.guildwars2.com/*" });
-  console.log(`gw2tabs: ${JSON.stringify(gw2WikiTabs)}`);
+
 
   // TODO execute the single only script this project has
-  for (const tab of gw2WikiTabs) {
-    console.log(tab);
-
-    //       await browser.scripting.executeScript({
-    //         target: { tabId: tab.id! },
-    //         files: cs.js,
-    //       });
-    //     } catch (error) {
-    //       console.log(`error: ${error}`);
-    //     }
-  }
 
   try {
     // await browser.scripting.executeScript({})
@@ -45,12 +35,41 @@ browser.runtime.onInstalled.addListener(async (): Promise<void> => {
   browser.storage.local.set({ dark: true });
 });
 
-browser.runtime.onStartup.addListener(() => {
-  let isEnabled = browser.storage.local.get(["dark"]);
+browser.runtime.onStartup.addListener(async () => {
+  let isEnabled = (await browser.storage.local.get(["dark"])) as IsDarkModeEnabled;
   if (isEnabled.dark) {
     setColorMode(isEnabled.dark);
   }
 });
+
+browser.action.onClicked.addListener(async (tab) => {
+  if (!tab.incognito) {
+    if (tab.url && tab.url.includes("guildwars2")) {
+      let isEnabled = await browser.storage.local.get(["dark"]);
+
+      if (isEnabled.dark) {
+        browser.action.setBadgeText({ text: "OFF" });
+        browser.storage.local.set({ dark: false });
+        setColorMode(false);
+      } else {
+        browser.action.setBadgeText({ text: "ON" });
+        browser.storage.local.set({ dark: true });
+        setColorMode(true);
+      }
+    }
+  }
+});
+
+async function setColorMode(colorModeToggle: boolean) {
+  const [tab] = await browser.tabs.query({ active: true, lastFocusedWindow: true });
+  await sendMessage(
+    "dark-mode-toggle",
+    { dark: colorModeToggle },
+    { context: "content-script", tabId: tab.id! },
+  ).catch((error) => {
+    console.log("SET COLOR MODE ERROR", error);
+  });
+}
 
 // let previousTabId = 0;
 
@@ -88,29 +107,3 @@ browser.runtime.onStartup.addListener(() => {
 //     };
 //   }
 // });
-
-browser.action.onClicked.addListener(async (tab) => {
-  if (!tab.incognito) {
-    if (tab.url && tab.url.includes("guildwars2")) {
-      let isEnabled = await browser.storage.local.get(["dark"]);
-
-      if (isEnabled.dark) {
-        browser.action.setBadgeText({ text: "OFF" });
-        browser.storage.local.set({ dark: false });
-        setColorMode(false);
-      } else {
-        browser.action.setBadgeText({ text: "ON" });
-        browser.storage.local.set({ dark: true });
-        setColorMode(true);
-      }
-    }
-  }
-});
-
-async function setColorMode(colorModeToggle: boolean) {
-  const [tab] = await browser.tabs.query({ active: true, lastFocusedWindow: true });
-
-  await browser.tabs.sendMessage(tab.id, { colorMode: colorModeToggle }).catch((error) => {
-    console.log(JSON.stringify(error));
-  });
-}

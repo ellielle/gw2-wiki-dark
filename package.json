@@ -2,7 +2,7 @@
   "name": "gw2-wiki-dark-mode",
   "displayName": "GW2 Wiki Dark Mode",
   "author": "Noelle L'Amour",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@8.6.9",
   "description": "Enable the wiki's Vector dark theme automatically when loading a page without being logged in.",
