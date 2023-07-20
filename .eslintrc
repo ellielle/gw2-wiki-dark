@@ -2,9 +2,9 @@
   "extends": "@antfu",
   "rules": {
     "semi": "off",
-    "@typescript-eslint/semi": ["warning", "always"],
-    "quotes": ["warning", "double"],
-    "@typescript-eslint/quotes": ["warning", "double"],
+    "@typescript-eslint/semi": "off",
+    "quotes": "off",
+    "@typescript-eslint/quotes": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "no-tabs": "off",
     "@typescript-eslint/indent": "off",
