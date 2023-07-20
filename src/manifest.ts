@@ -35,7 +35,7 @@ export async function getManifest() {
       128: "./assets/icon-512.png",
     },
     permissions: ["tabs", "storage", "activeTab"],
-    host_permissions: ["*://*/*"],
+    host_permissions: ["*://*.guildwars2/*"],
     content_scripts: [
       {
         matches: ["*://*.guildwars2.com/*"],
@@ -55,16 +55,24 @@ export async function getManifest() {
           `script-src \'self\' http://localhost:${port}; object-src \'self\'`
         : "script-src 'self'; object-src 'self'",
     },
+    browser_specific_settings: isFirefox
+      ? {
+          gecko: {
+            id: "{5779845d-b1fc-4196-aa0a-4950dedff2f6}",
+            // update_url: "https://github.com/ellielle/gw2-wiki-dark/firefox/update_manifest.json",
+          },
+        }
+      : undefined,
   };
 
   // FIXME: not work in MV3
-  if (isDev && false) {
-    // for content script, as browsers will cache them for each reload,
-    // we use a background script to always inject the latest version
-    // see src/background/contentScriptHMR.ts
-    delete manifest.content_scripts;
-    manifest.permissions?.push("webNavigation");
-  }
+  // if (isDev && false) {
+  // for content script, as browsers will cache them for each reload,
+  // we use a background script to always inject the latest version
+  // see src/background/contentScriptHMR.ts
+  //   delete manifest.content_scripts;
+  //   manifest.permissions?.push("webNavigation");
+  // }
 
   return manifest;
 }

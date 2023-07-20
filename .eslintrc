@@ -2,12 +2,15 @@
   "extends": "@antfu",
   "rules": {
     "semi": "off",
-    "@typescript-eslint/semi": "off",
     "quotes": "off",
+    "no-tabs": "off",
+    "arrow-parens": "off",
+    "operator-linebreak": "off",
+    "curly": "off",
+    "@typescript-eslint/semi": "off",
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/member-delimiter-style": "off",
-    "no-tabs": "off",
     "@typescript-eslint/indent": "off",
-    "arrow-parens": "off"
+    "@typescript-eslint/brace-style": "off"
   }
 }
