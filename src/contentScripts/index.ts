@@ -5,10 +5,10 @@ import { onMessage } from "webext-bridge/content-script";
   // TODO send message to set badge text
   if (isEnabled.dark) {
     loadDarkMode();
-  } else {
-    removeDarkMode();
   }
 })();
+// TODO use the local storage composable
+// TODO clean up unused files, like stores, etc
 
 function loadDarkMode() {
   const isDarkMode = window.location.search;
@@ -46,7 +46,10 @@ onMessage("dark-mode-toggle", ({ data }) => {
   }
 });
 
-onMessage("enable-all-tabs", async ({ data }) => {
-  return data;
-  // console.log("enable all tabs", data);
-});
+// onMessage("enable-all-tabs", async ({ data }) => {
+//   if (data.all) {
+//     console.log("all on");
+//   } else {
+//     console.log("all off");
+//   }
+// });
