@@ -11,6 +11,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import UnoCSS from "unocss/vite";
 import { isDev, port, r } from "./scripts/utils";
 import packageJson from "./package.json";
+
 // TODO
 
 export const sharedConfig: UserConfig = {
