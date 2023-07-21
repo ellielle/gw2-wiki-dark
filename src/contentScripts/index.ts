@@ -7,8 +7,6 @@ import { onMessage } from "webext-bridge/content-script";
     loadDarkMode();
   }
 })();
-// TODO use the local storage composable
-// TODO clean up unused files, like stores, etc
 
 function loadDarkMode() {
   const isDarkMode = window.location.search;

@@ -37,7 +37,7 @@ browser.runtime.onConnect.addListener(async () => {
   }
 });
 browser.runtime.onStartup.addListener(async () => {
-  browser.action.setIcon({ path: "../assets/icon-32.png" })
+  // browser.action.setIcon({ path: "./assets/icon-48.png" })
 });
 
 browser.action.onClicked.addListener(async (tab) => {
