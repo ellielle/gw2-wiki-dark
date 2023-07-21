@@ -8,5 +8,6 @@ declare module "webext-bridge" {
     // "tab-prev": { title: string | undefined };
     // "get-current-tab": ProtocolWithReturn<{ tabId: number }, { title?: string }>;
     "dark-mode-toggle": { dark: boolean | undefined };
+    "enable-all-tabs": { all: boolean | undefined };
   }
 }
