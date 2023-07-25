@@ -22,7 +22,7 @@ For each new release:
 
 ## Firefox
 
-* Not yet. Sorry.
+* Waiting on Mozilla approval.
 
 <br>
 
