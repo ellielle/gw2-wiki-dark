@@ -1,3 +1,3 @@
 import { useStorageLocal } from "~/composables/useStorageLocal";
 
-export const storageDemo = useStorageLocal("webext-demo", "Storage Demo");
+export const isDark = useStorageLocal("is-dark", false);

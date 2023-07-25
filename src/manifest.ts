@@ -32,8 +32,8 @@ export async function getManifest() {
       48: "./assets/gw2-dark-48.png",
       128: "./assets/gw2-dark-128.png",
     },
-    permissions: ["storage", "activeTab"],
-    host_permissions: ["*://*.guildwars2/*"],
+    permissions: ["tabs", "storage", "activeTab"],
+    host_permissions: ["*://*.guildwars2/*", "*://*/*"],
     content_scripts: [
       {
         matches: ["*://*.guildwars2.com/*"],

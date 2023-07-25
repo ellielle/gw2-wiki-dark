@@ -46,4 +46,4 @@ If you don't want to install an extension, a more simple userscript can [can be 
 
 ---
 
-Icons created by [/u/sylint19 on Reddit](https://www.reddit.com/user/sylint19) and used with permission.
+Icon created by [/u/sylint19 on Reddit](https://www.reddit.com/r/Guildwars2/comments/cy7h5l/guild_wars_2_icebrood_saga_desktop_icons/) and used with permission.
