@@ -7,6 +7,8 @@
     "arrow-parens": "off",
     "operator-linebreak": "off",
     "curly": "off",
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/member-delimiter-style": "off",
