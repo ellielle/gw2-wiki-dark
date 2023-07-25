@@ -13,12 +13,12 @@ export async function getManifest() {
     description: pkg.description,
     action: {
       default_icon: "./assets/gw2-dark-128.png",
-      default_popup: "./dist/popup/index.html",
+      // default_popup: "./dist/popup/index.html",
     },
-    options_ui: {
-      page: "./dist/options/index.html",
-      // open_in_tab: true,
-    },
+    // options_ui: {
+    //   page: "./dist/options/index.html",
+    //   open_in_tab: true,
+    // },
     background: isFirefox
       ? {
           scripts: ["dist/background/index.mjs"],
@@ -32,7 +32,7 @@ export async function getManifest() {
       48: "./assets/gw2-dark-48.png",
       128: "./assets/gw2-dark-128.png",
     },
-    permissions: ["tabs", "storage", "activeTab"],
+    permissions: ["storage", "activeTab"],
     host_permissions: ["*://*.guildwars2/*"],
     content_scripts: [
       {
