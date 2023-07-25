@@ -43,3 +43,7 @@ If you don't want to install an extension, a more simple userscript can [can be 
 * Only works on the English wiki currently.
 
 * No mobile support
+
+---
+
+Icons created by [/u/sylint19 on Reddit](https://www.reddit.com/user/sylint19) and used with permission.
