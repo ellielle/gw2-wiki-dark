@@ -1,17 +1,16 @@
 import { onMessage } from "webext-bridge/content-script";
+import { isDark } from "~/logic";
 
 (async () => {
-  const isEnabled = await browser.storage.local.get(["dark"]);
   // TODO send message to set badge text
-  if (isEnabled.dark) {
+  // TODO search for gw2wiki tabs and only load on them?
+  if (isDark.value) {
     loadDarkMode();
   }
 })();
 
 function loadDarkMode() {
-  const isDarkMode = window.location.search;
-
-  if (!isDarkMode.includes("vector")) {
+  if (!window.location.search.includes("vector")) {
     const newUrl = `${window.location.protocol}//${window.location.host}${
       window.location.pathname
     }${
@@ -43,11 +42,3 @@ onMessage("dark-mode-toggle", ({ data }) => {
     loadDarkMode();
   }
 });
-
-// onMessage("enable-all-tabs", async ({ data }) => {
-//   if (data.all) {
-//     console.log("all on");
-//   } else {
-//     console.log("all off");
-//   }
-// });
