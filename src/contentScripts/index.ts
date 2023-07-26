@@ -2,8 +2,6 @@ import { onMessage } from "webext-bridge/content-script";
 import { isDark } from "~/logic";
 
 (async () => {
-  // TODO send message to set badge text
-  // TODO search for gw2wiki tabs and only load on them?
   if (isDark.value) {
     loadDarkMode();
   }
