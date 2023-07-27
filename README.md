@@ -1,4 +1,4 @@
-# GW2 Wiki - Dark
+# GW2 Wiki Dark Mode
 
 This simple extension automatically sets the color theme for the [official GW2 wiki](https://wiki.guildwars2.com/wiki/Main_Page) to the official Vector dark theme without needing to be logged in. 
 

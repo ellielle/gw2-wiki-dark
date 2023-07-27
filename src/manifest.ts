@@ -56,9 +56,9 @@ export async function getManifest() {
     browser_specific_settings: isFirefox
       ? {
           gecko: {
-            id: "{5779845d-b1fc-4196-aa0a-4950dedff2f6}",
+            id: "{cbf35fbd-c8a3-49df-88bb-56436f28d795}",
             // update_url: "https://github.com/ellielle/gw2-wiki-dark/firefox/update_manifest.json",
-            strict_min_version: "109",
+            strict_min_version: "112.0",
           },
         }
       : undefined,
