@@ -36,9 +36,9 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.8",
     "@ffflorian/jszip-cli": "^3.4.1",
-    "@iconify/json": "^2.2.94",
+    "@iconify/json": "^2.2.95",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^20.4.4",
+    "@types/node": "^20.4.5",
     "@types/webextension-polyfill": "^0.10.1",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@unocss/reset": "^0.53.6",
