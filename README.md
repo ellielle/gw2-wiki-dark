@@ -6,7 +6,16 @@ This simple extension automatically sets the color theme for the [official GW2 w
 
 # Installation
 
+<br>
+
+## Firefox
+
+The addon can be [downloaded from its extension page](https://addons.mozilla.org/en-US/firefox/addon/gw2-wiki-dark-mode/).
+<br> 
+
 ## Chrome
+
+> Note: The Chrome extension isn't available on the store yet.
 
 For each new release:
 
@@ -20,19 +29,13 @@ For each new release:
 
 <br>
 
-## Firefox
-
-* Waiting on Mozilla approval.
-
-<br>
-
 ## UserScript
 
 If you don't want to install an extension, a more simple userscript can [can be found here](https://gist.github.com/ellielle/e9182e1822d089122db9c8f6981f4ba5).
 
 * Open the gist page and click the "Raw" button. 
 
-* If your UserScript extension doesn't pop up to install the script, copy and paste it into a new script. Save and enable it.
+* If your UserScript extension doesn't pop up to install the script, copy and paste all of it into a new user script. Save and enable it.
 
 <br>
 
@@ -41,8 +44,6 @@ If you don't want to install an extension, a more simple userscript can [can be 
 * After installation, any previously open GW2 Wiki tabs need to be refreshed so the extension knows about them.
 
 * Only works on the English wiki currently.
-
-* No mobile support
 
 ---
 
