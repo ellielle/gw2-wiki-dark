@@ -6,17 +6,18 @@ This simple extension automatically sets the color theme for the [official GW2 w
 
 # Installation
 
-<br>
-
 ## Firefox
 
 The addon can be [downloaded from its extension page](https://addons.mozilla.org/en-US/firefox/addon/gw2-wiki-dark-mode/).
+
 <br> 
 
 ## Chrome
 
 > Note: The Chrome extension isn't available on the store yet.
 
+<details>
+<summary>If you want to install and use anyway:</summary>
 For each new release:
 
 * Download the most current release, make sure to download ```gw2-wiki-dark-chrome.zip```. Extract the files into an empty folder.
@@ -26,6 +27,7 @@ For each new release:
 * After installation, make sure the extension is enabled. Reload any GW2 Wiki pages currently open.
 
 * You may delete the folder and ```.zip``` file now. 
+</details>
 
 <br>
 
