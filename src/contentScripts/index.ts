@@ -8,7 +8,7 @@ import { isDark } from "~/logic";
 })();
 
 function loadDarkMode() {
-  if (!window.location.search.includes("vector")) {
+  if (!window.location.search.includes("vector") && window.location.search.includes("wiki")) {
     const newUrl = `${window.location.protocol}//${window.location.host}${
       window.location.pathname
     }${
