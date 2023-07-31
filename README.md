@@ -44,41 +44,29 @@ If you don't want to install an extension, a more simple userscript can [can be 
 
 # Building
 
-To build the extension for yourself, do the following:
+To build the extension for yourself:
 
 1. Clone the repository using git: `git clone https://github.com/ellielle/gw2-wiki-dark.git`
 
     - If you are new to or unfamiliar with git, reference GitHub's article on [cloning a repository](https://help.github.com/en/articles/cloning-a-repository).
 
 2. Run `pnpm install` to install the Node packages.
-    - If you don't have `pnpm`, you can run `npm i -g pnpm` to install the package manager. If you don't have `npm`, reference [Node Version Manager's installtion section](https://github.com/nvm-sh/nvm#installing-and-updating), the recommended way to install Node.js and npm.
+    - If you don't have `pnpm`, [you can install it](https://pnpm.io/installation) a number of ways.
 
-3. Run `pnpm dev` to build extension and watch for changes in code to rebuild it. The extension will need to be refreshed/reinstalled for changes to be reflected in the browser. 
+3. Run `pnpm build`, or `pnpm build:firefox`, to build the extension. The extension will need to be refreshed for changes to be reflected in the browser. Alternatively, you can run `pnpm dev` or `pnpm dev:firefox` to build the extension, and then have the dev server watch for changes in code to rebuild it.
 
-4. To test the built extension, you will need either Chrome or [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/).
+4. To test the built extension:
     
     - Chrome:
       1. Go to ```chrome://extensions``` in your browser. In the top right, enable Developer Mode, and click "Load Unpacked Extension". 
       2. Select the `extension` folder in the root project directory.
 
     - Firefox: 
-      1. Run `build:firefox` and then `pack:zip`. 
+      1. Run `pack:xpi` to create `gw2-wiki-dark.xpi`. 
       2. Go to `about:config` and set `xpinstall.signatures.required` to false.
-      3. Go to `about:addons`, click the cog in the upper right of the section. Click `Install Add-on From File` and select `gw2-wiki-dark.zip`.
+      3. Go to `about:debugging#/runtime/this-firefox`, click the `Load Temporary Add-On` in the upper right of the section. Select `gw2-wiki-dark.xpi`.
 
 > If using WSL2, see their [documentation on WSL2 with GUI apps](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps). 
-    
-5. To build the extension for yourself:
-
-    1. Run one of the following build commands depending on your desired browser. The build will be in the `extension` folder.
-        - `pnpm build` to build for Chromium.
-        - `pnpm build:firefox` to build for Firefox.
-    
-    2. You can zip the extension folder yourself, or use one of the `pack` commands for the format you need.
-        - `pnpm pack:zip` creates a standard zip file.
-        - `pnpm pack:xpi` creates a Firefox-specific archive file.
-        - `pnpm pack:crx` creates a Chrome-specific archive file.
-
 
 > Note: Addons for Firefox need to be signed by Mozilla. You can sign it for self-distribution or adding to AMO [on their submission site](https://addons.mozilla.org/en-US/developers/addon/submit/distribution).
 

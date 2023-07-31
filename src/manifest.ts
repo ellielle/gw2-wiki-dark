@@ -13,6 +13,7 @@ export async function getManifest() {
     description: pkg.description,
     action: {
       default_icon: "./assets/gw2-dark-128.png",
+      default_title: "Dark Mode Toggle",
       // default_popup: "./dist/popup/index.html",
     },
     // options_ui: {
@@ -33,10 +34,10 @@ export async function getManifest() {
       128: "./assets/gw2-dark-128.png",
     },
     permissions: ["tabs", "storage", "activeTab"],
-    host_permissions: ["*://*.guildwars2/*", "*://*/*"],
+    host_permissions: ["https://*.guildwars2.com/*"],
     content_scripts: [
       {
-        matches: ["*://*.guildwars2.com/*"],
+        matches: ["https://*.guildwars2.com/*"],
         js: ["dist/contentScripts/index.global.js"],
         run_at: "document_start",
       },
