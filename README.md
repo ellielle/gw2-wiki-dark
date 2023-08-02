@@ -53,7 +53,7 @@ To build the extension for yourself:
 2. Run `pnpm install` to install the Node packages.
     - If you don't have `pnpm`, [you can install it](https://pnpm.io/installation) a number of ways.
 
-3. Run `pnpm build`, or `pnpm build:firefox`, to build the extension. The extension will need to be refreshed for changes to be reflected in the browser. Alternatively, you can run `pnpm dev` or `pnpm dev:firefox` to build the extension, and then have the dev server watch for changes in code to rebuild it.
+3. Run `pnpm build`, or `pnpm build-firefox`, to build the extension. The extension will need to be refreshed for changes to be reflected in the browser. Alternatively, you can run `pnpm dev` or `pnpm dev-firefox` to build the extension, and then have the dev server watch for changes in code to rebuild it.
 
 4. To test the built extension:
     
