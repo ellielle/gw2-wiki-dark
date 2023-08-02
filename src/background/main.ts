@@ -58,7 +58,7 @@ runtime.onStartup.addListener(async (): Promise<void> => {
 });
 
 action.onClicked.addListener(async (tab): Promise<void> => {
-  if (tab.url && tab.url.includes("guildwars2") && isDark) {
-    toggleDarkMode(!isDark.value);
+  if (tab.url && tab.url.includes("guildwars2")) {
+    toggleDarkMode(!isDark.value ?? true);
   }
 });

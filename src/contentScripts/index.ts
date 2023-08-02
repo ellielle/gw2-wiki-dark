@@ -36,7 +36,7 @@ function removeDarkMode() {
 onMessage("dark-mode-toggle", ({ data }) => {
   if (!data.dark) {
     removeDarkMode();
-  } else if (data.dark) {
-    loadDarkMode();
+    return;
   }
+  loadDarkMode();
 });
