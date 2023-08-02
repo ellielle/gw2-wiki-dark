@@ -33,21 +33,21 @@ export async function getManifest() {
       48: "./assets/gw2-dark-48.png",
       128: "./assets/gw2-dark-128.png",
     },
-    permissions: ["tabs", "storage", "activeTab"],
-    host_permissions: ["https://*.guildwars2.com/*"],
+    permissions: ["storage", "activeTab", "tabs"],
+    host_permissions: ["*://*.guildwars2.com/*"],
     content_scripts: [
       {
-        matches: ["https://*.guildwars2.com/*"],
+        matches: ["*://*.guildwars2.com/*"],
         js: ["dist/contentScripts/index.global.js"],
         run_at: "document_start",
       },
     ],
-    web_accessible_resources: [
-      {
-        resources: ["dist/contentScripts/style.css"],
-        matches: ["<all_urls>"],
-      },
-    ],
+    // web_accessible_resources: [
+    //   {
+    //     resources: ["dist/contentScripts/style.css"],
+    //     matches: ["<all_urls>"],
+    //   },
+    // ],
     content_security_policy: {
       extension_pages: isDev
         ? // this is required on dev for Vite script to load
@@ -57,10 +57,12 @@ export async function getManifest() {
     browser_specific_settings: isFirefox
       ? {
           gecko: {
-            id: "{cbf35fbd-c8a3-49df-88bb-56436f28d795}",
-            // update_url: "https://github.com/ellielle/gw2-wiki-dark/firefox/update_manifest.json",
+            id: "gw2dark@ellielle",
             strict_min_version: "112.0",
           },
+          // gecko_android: {
+          //   strict_min_version: "112.0",
+          // },
         }
       : undefined,
   };
