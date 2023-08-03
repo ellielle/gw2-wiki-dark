@@ -1,11 +1,4 @@
 import { onMessage } from "webext-bridge/content-script";
-import { isDark } from "~/logic";
-
-(async () => {
-  if (isDark.value) {
-    loadDarkMode();
-  }
-})();
 
 function loadDarkMode() {
   if (!window.location.search.includes("vector") && window.location.host.includes("wiki")) {
