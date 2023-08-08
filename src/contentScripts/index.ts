@@ -1,4 +1,4 @@
-import { onMessage } from "webext-bridge/content-script";
+import { runtime } from "webextension-polyfill";
 
 function loadDarkMode() {
   if (!window.location.search.includes("vector") && window.location.host.includes("wiki")) {
@@ -26,7 +26,7 @@ function removeDarkMode() {
   }
 }
 
-onMessage("dark-mode-toggle", ({ data }) => {
+runtime.onMessage.addListener((data) => {
   if (!data.dark) {
     removeDarkMode();
     return;
