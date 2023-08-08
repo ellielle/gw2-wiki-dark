@@ -1,4 +1,3 @@
-import { sendMessage } from "webext-bridge/background";
 import { type Tabs, action, runtime } from "webextension-polyfill";
 import { isDark } from "~/logic";
 
@@ -7,12 +6,11 @@ runtime.onInstalled.addListener((): void => {
 });
 
 runtime.onStartup.addListener((): void => {
-  toggleDarkMode(isDark.value);
+  toggleDarkMode(isDark.value ?? true);
 });
 
 runtime.onConnect.addListener((): void => {
-  // TODO background script keeps interrupting idle and executing this
-  toggleDarkMode(isDark.value);
+  toggleDarkMode(isDark.value ?? true);
 });
 
 action.onClicked.addListener((tab): void => {
@@ -32,7 +30,6 @@ if (import.meta.hot) {
 async function getGW2WikiTabs(): Promise<Tabs.Tab[] | null> {
   // active: true can be added to query to have tab-specific toggling
 
-  // TODO see if one of the async/awaits is causing the background script to stay alive
   return await browser.tabs
     .query({
       url: "*://*.guildwars2.com/*",
@@ -52,11 +49,7 @@ async function setColorModeAndReloadTabs(colorModeToggle: boolean): Promise<void
 
   if (gw2Tabs) {
     for (const tab of gw2Tabs) {
-      sendMessage(
-        "dark-mode-toggle",
-        { dark: colorModeToggle },
-        { context: "content-script", tabId: tab.id! },
-      );
+      browser.tabs.sendMessage(tab.id!, { dark: isDark.value });
     }
   }
 }
