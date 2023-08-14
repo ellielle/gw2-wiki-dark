@@ -13,6 +13,7 @@
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/brace-style": "off"
+    "@typescript-eslint/brace-style": "off",
+    "antfu/top-level-function": "off"
   }
 }
