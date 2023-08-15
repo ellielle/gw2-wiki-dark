@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isDark } from '~/logic/storage'
+import { colorMode } from '~/logic/storage'
 
 function openOptionsPage() {
   browser.runtime.openOptionsPage()
@@ -16,7 +16,7 @@ function openOptionsPage() {
       Open Options
     </button>
     <div class="mt-2">
-      <span class="opacity-50">Storage:</span> {{ isDark }}
+      <span class="opacity-50">Storage:</span> {{ colorMode }}
     </div>
   </main>
 </template>

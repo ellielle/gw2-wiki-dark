@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { isDark } from "~/logic/storage";
+  import { colorMode } from "~/logic/storage";
 
   function toggleDarkMode() {
-    isDark.value = !isDark.value;
+    colorMode.value = colorMode.value === "dark" ? "light" : "dark";
   }
 </script>
 
@@ -17,7 +17,7 @@
       class="border border-gray-400 rounded px-2 py-1 mt-2"
       @click="toggleDarkMode"
     >
-      {{ isDark }}
+      {{ colorMode }}
     </button>
 
     <div class="mt-4">
