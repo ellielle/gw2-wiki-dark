@@ -1,6 +1,6 @@
-import { runtime } from "webextension-polyfill";
+import { onMessage } from "webext-bridge/content-script";
 
-function loadDarkMode() {
+const loadDarkMode = () => {
   if (!window.location.search.includes("vector") && window.location.host.includes("wiki")) {
     const newUrl = `${window.location.protocol}//${window.location.host}${
       window.location.pathname
@@ -10,9 +10,9 @@ function loadDarkMode() {
 
     window.location.replace(newUrl);
   }
-}
+};
 
-function removeDarkMode() {
+const removeDarkMode = () => {
   let searchData;
 
   if (window.location.search.includes("vector")) {
@@ -24,12 +24,12 @@ function removeDarkMode() {
 
     window.location.replace(newUrl);
   }
-}
+};
 
-runtime.onMessage.addListener((data) => {
-  if (!data.dark) {
+onMessage("dark-mode-toggle", ({ data }) => {
+  if (data.dark === "light") {
     removeDarkMode();
-    return;
+  } else {
+    loadDarkMode();
   }
-  loadDarkMode();
 });
