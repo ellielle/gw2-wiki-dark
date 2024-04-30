@@ -7,26 +7,20 @@ browser.runtime.onInstalled.addListener(async ({ reason }) => {
   }
 });
 
-browser.runtime.onConnect.addListener(async () => {
-  console.log("on connect");
-});
-
-browser.runtime.onStartup.addListener(async () => {
-  console.log("on startup");
-});
+browser.runtime;
 
 browser.action.onClicked.addListener(async (tab) => {
   if (tab.url && tab.url.includes("wiki")) {
     console.log("at wiki");
     let colorMode = await browser.storage.local.get("gw2Dark");
     let newColor = colorMode.gw2Dark == "dark" ? "light" : "dark";
-    await saveColorMode(newColor);
-    setColorMode(newColor);
+    saveColorMode(newColor);
+    setColorModeInTabs(newColor);
     reloadTabs(newColor);
   }
 });
 
-function getGW2WikiTabs() {
+async function getGW2WikiTabs() {
   console.log("getgw2wikitabs");
   // active: true can be added to query to have tab-specific toggling
   return browser.tabs
@@ -42,20 +36,20 @@ function reloadTabs(colorMode) {
   console.log("RELOAD TABS");
 
   if (colorMode === "dark") {
-    browser.action.setIcon({ path: "../icons/gw2-dark-48.png" });
+    browser.action.setIcon({ path: "src/icons/gw2-dark-48.png" });
     return;
   }
-  browser.action.setIcon({ path: "../icons/gw2-disabled.png" });
+  browser.action.setIcon({ path: "src/icons/gw2-disabled.png" });
 }
 
-function setColorMode(colorMode) {
+async function setColorModeInTabs(colorMode) {
   console.log("setcolormode");
 
-  const gw2Tabs = getGW2WikiTabs();
+  const gw2Tabs = await getGW2WikiTabs();
   if (gw2Tabs) {
     for (const tab of gw2Tabs) {
-      // FIXME: sendMessage doesn't work this way without the bundling
-      console.log("tabs!", tab);
+      // BUG: sendMessage fails on first attempt(?) might need to wake up something?
+      browser.tabs.sendMessage(tab.id, colorMode);
     }
   }
 }

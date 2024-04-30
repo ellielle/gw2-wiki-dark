@@ -1,5 +1,4 @@
 const loadDarkMode = () => {
-  console.log("LOAD DARK MODE");
   // TODO: need to account for other query parameters and append them after
   if (
     !window.location.search.includes("vector") &&
@@ -18,9 +17,7 @@ const loadDarkMode = () => {
 };
 
 const removeDarkMode = () => {
-  console.log("REMOVE DARK MODE");
   let searchData;
-  window.alert("fucking");
 
   if (window.location.search.includes("vector")) {
     searchData = window.location.search.replace(/[&?]useskin=vector/, "");
@@ -34,12 +31,9 @@ const removeDarkMode = () => {
 };
 
 browser.runtime.onMessage.addListener((data) => {
-  console.log("CONTENT LISTENER");
   if (data === "light") {
     removeDarkMode();
-    return false;
+    return;
   }
   loadDarkMode();
-
-  return false;
 });
