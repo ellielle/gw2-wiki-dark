@@ -1,3 +1,6 @@
+// loadDarkMode edits the url of the page to include `useskin=vector`
+// and then reloads the page, forcing the GW2 wiki page into
+// the built-in dark mode
 const loadDarkMode = () => {
   // TODO: need to account for other query parameters and append them after
   if (
@@ -16,6 +19,9 @@ const loadDarkMode = () => {
   }
 };
 
+// removeDarkMode removes `useskin=vector` from the url
+// and reloads the page, setting the wiki back to the default
+// light mode
 const removeDarkMode = () => {
   let searchData;
 
@@ -30,6 +36,8 @@ const removeDarkMode = () => {
   }
 };
 
+// Message listener that receives messages from background.js:setColorModeInTabs
+// on when to change the color mode
 browser.runtime.onMessage.addListener((data) => {
   if (data === "light") {
     removeDarkMode();
