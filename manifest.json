@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "GW2 Wiki Dark Mode",
+  "version": "0.3.0",
+  "description": "Enable the wiki's Vector dark theme automatically when loading a page without being logged in.",
+  "action": {
+    "default_icon": "src/icons/gw2-dark-128.png",
+    "default_title": "Dark Mode Toggle",
+    "default_popup": "src/popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "src/browser-polyfill.js",
+      "src/background/background.js"
+    ]
+  },
+  "icons": {
+    "16": "src/icons/gw2-dark-16.png",
+    "48": "src/icons/gw2-dark-48.png",
+    "128": "src/icons/gw2-dark-128.png"
+  },
+  "homepage_url": "https://github.com/ellielle/gw2-wiki-dark",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://*.guildwars2.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.guildwars2.com/*"
+      ],
+      "js": [
+        "src/browser-polyfill.js",
+        "src/content_scripts/content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "gw2dark@ellielle",
+      "strict_min_version": "112.0"
+    }
+  }
+}
