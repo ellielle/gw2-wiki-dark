@@ -4,8 +4,5 @@
   "version": "0.3.0",
   "private": true,
   "description": "Enable the wiki's Vector dark theme automatically when loading a page without being logged in.",
-  "author": "Noelle L'Amour",
-  "devDependencies": {
-    "webextension-polyfill": "^0.11.0"
-  }
+  "author": "Noelle L'Amour"
 }
