@@ -1,27 +1,33 @@
+// Sets the extension to dark mode on installation
+// NOTE: This may need to be changed
 browser.runtime.onInstalled.addListener(async ({ reason }) => {
   if (reason === "install") {
-    console.log("on installed");
     await browser.storage.local.set({
       gw2Dark: "dark",
     });
   }
 });
 
-browser.runtime;
+// TODO: the addon should dark mode new tabs when they open
+// will probably need to listen for domloaded event or something similar
 
+// Listens for a click event on the extension icon
 browser.action.onClicked.addListener(async (tab) => {
+  // Wake up background page so it can establish a connection without error
+  let gettingPage = await browser.runtime.getBackgroundPage();
+
+  // Only activate extension on GW2 wiki pages
   if (tab.url && tab.url.includes("wiki")) {
-    console.log("at wiki");
     let colorMode = await browser.storage.local.get("gw2Dark");
     let newColor = colorMode.gw2Dark == "dark" ? "light" : "dark";
     saveColorMode(newColor);
     setColorModeInTabs(newColor);
-    reloadTabs(newColor);
+    changeIcon(newColor);
   }
 });
 
+// getGW2WikiTabs returns an Array of all browser tabs opened to the GW2 wiki
 async function getGW2WikiTabs() {
-  console.log("getgw2wikitabs");
   // active: true can be added to query to have tab-specific toggling
   return browser.tabs
     .query({
@@ -32,9 +38,9 @@ async function getGW2WikiTabs() {
     });
 }
 
-function reloadTabs(colorMode) {
-  console.log("RELOAD TABS");
-
+// changeIcon changes the extension's browser action button
+// to be colored when in dark mode, and greyscale in light mode
+function changeIcon(colorMode) {
   if (colorMode === "dark") {
     browser.action.setIcon({ path: "src/icons/gw2-dark-48.png" });
     return;
@@ -42,9 +48,9 @@ function reloadTabs(colorMode) {
   browser.action.setIcon({ path: "src/icons/gw2-disabled.png" });
 }
 
+// setColorModeInTabs gets a list of open GW2 wiki tabs
+// and sends a message to each with the new color mode
 async function setColorModeInTabs(colorMode) {
-  console.log("setcolormode");
-
   const gw2Tabs = await getGW2WikiTabs();
   if (gw2Tabs) {
     for (const tab of gw2Tabs) {
@@ -54,9 +60,9 @@ async function setColorModeInTabs(colorMode) {
   }
 }
 
+// saveColorMode saves the user's color mode preference
+// to local storage
 async function saveColorMode(color) {
-  console.log("toggle dark");
-  console.log("actual color: ", color);
   await browser.storage.local.set({
     gw2Dark: color,
   });
