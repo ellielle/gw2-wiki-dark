@@ -28,7 +28,6 @@ async function setColorModeInTabs(colorMode) {
   if (gw2Tabs) {
     for (const tab of gw2Tabs) {
       console.log("tab: ", tab);
-      // BUG: sendMessage fails on first attempt(?) might need to wake up something?
       await browser.tabs.sendMessage(tab.id, colorMode);
     }
   }
@@ -78,34 +77,30 @@ browser.action.onClicked.addListener(async (tab) => {
   }
 });
 
-// TODO: the addon should dark mode new tabs when they open
-// will probably need to listen for domloaded event or something similar
-// TODO: will also need to be able to detect that dark is the setting on
-// wiki page load, and change.
-
 // set a filter for the onUpdated listener to only
 // listen for changes to the url in tabs that match
 // *://*.guildwars2.com/*
 const event_filter = {
   properties: ["url"],
 };
-browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  // Object is shaped as { gw2Dark: "dark" | "light" }
-  let colorMode = await getColorMode();
 
-  // FIXME: onUpdated might not be the way to go, look into other methods
-  console.log("TAB ID: ", tabId);
-  await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
-  //  // Wake up background page so it can establish a connection without error
-  //  let gettingPage = await browser.runtime.getBackgroundPage();
-  //  await gettingPage;
-  //
-  //  // Only activate extension on GW2 wiki pages
-  //  if (tab.url && tab.url.includes("wiki")) {
-  //    let colorMode = await browser.storage.local.get("gw2Dark");
-  //    let newColor = colorMode.gw2Dark == "dark" ? "light" : "dark";
-  //    saveColorMode(newColor);
-  //    setColorModeInTabs(newColor);
-  //    changeIcon(newColor);
-  //  }
+browser.tabs.onUpdated.addListener(async (tabId, tabUrl, tab) => {
+  console.log("ON UPDATED DETAILS: ", tabId, tabUrl, tab);
+  if (tabUrl.url.includes("guildwars2") && tabUrl.url.includes("wiki")) {
+    let colorMode = await getColorMode();
+    console.log("color mode: ", colorMode.gw2Dark);
+    await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
+  }
 }, event_filter);
+
+browser.tabs.onCreated.addListener(async (tabId, tabUrl, tab) => {
+  console.log("ON CREATED DETAILS", tabId);
+  console.log("ON CREATED DETAILS", tabUrl);
+  console.log("ON CREATED DETAILS", tab);
+  if (!tabUrl.url.includes("guildwars2") || tabUrl.url.includes("wiki")) {
+    return;
+  }
+  let colorMode = await getColorMode();
+  console.log("color mode: ", colorMode.gw2Dark);
+  await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
+});
