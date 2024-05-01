@@ -21,7 +21,6 @@
 	"homepage_url": "https://github.com/ellielle/gw2-wiki-dark",
 	"permissions": [
 		"storage",
-		"activeTab",
 		"tabs"
 	],
 	"host_permissions": [
