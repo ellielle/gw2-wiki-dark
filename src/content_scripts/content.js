@@ -1,3 +1,18 @@
+// (function () {
+//   /**
+//    * Check and set a global guard variable.
+//    * If this content script is injected into the same page again,
+//    * it will do nothing next time.
+//    */
+//   if (window.hasRun) {
+//     return;
+//   }
+// });
+// window.hasRun = true;
+
+// TODO: the addon should dark mode new tabs when they open
+// will probably need to listen for domloaded event or something similar
+
 // loadDarkMode edits the url of the page to include `useskin=vector`
 // and then reloads the page, forcing the GW2 wiki page into
 // the built-in dark mode
@@ -39,6 +54,7 @@ const removeDarkMode = () => {
 // Message listener that receives messages from background.js:setColorModeInTabs
 // on when to change the color mode
 browser.runtime.onMessage.addListener((data) => {
+  console.log("data: ", data);
   if (data === "light") {
     removeDarkMode();
     return;
