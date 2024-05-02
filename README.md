@@ -54,9 +54,9 @@ To build the extension for yourself:
 
 Firefox:
 
-    2. Make a `zip` archive of the `src` folder and `manifest.json`
+2. Make a `zip` archive of the `src` folder and `manifest.json`
 
-    3. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`, and using the archive you just made.
+3. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`, and using the archive you just made.
 
 Chrome:
 
