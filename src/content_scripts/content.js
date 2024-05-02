@@ -13,7 +13,6 @@
 // and then reloads the page, forcing the GW2 wiki page into
 // the built-in dark mode
 const loadDarkMode = () => {
-  console.log("load dark mode function");
   // TODO: need to account for other query parameters and append them after
   if (
     !window.location.search.includes("vector") &&
@@ -35,7 +34,6 @@ const loadDarkMode = () => {
 // and reloads the page, setting the wiki back to the default
 // light mode
 const removeDarkMode = () => {
-  console.log("remove dark mode function");
   let searchData;
 
   if (window.location.search.includes("vector")) {
@@ -50,7 +48,6 @@ const removeDarkMode = () => {
 };
 
 const handleListener = (data) => {
-  console.log("data: ", data);
   if (data === "light") {
     removeDarkMode();
     return;
