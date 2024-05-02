@@ -5,6 +5,10 @@ This simple extension automatically sets the color theme for the [official GW2 w
 If you are on a version lower than `0.3.0`, I recommend updating. This extension no longer needs to be built and is no longer in TypeScript.
 <br>
 
+<div align="center">
+   <img src="https://addons.mozilla.org/user-media/previews/full/285/285709.png?modified=1690992574" width="800">
+</div>
+
 # Installation
 
 ## Firefox
