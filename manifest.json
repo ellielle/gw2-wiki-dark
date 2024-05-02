@@ -8,10 +8,8 @@
 		"default_title": "Dark Mode Toggle"
 	},
 	"background": {
-		"scripts": [
-			"src/browser-polyfill.js",
-			"src/background/background.js"
-		]
+		"service_worker": "src/background/background.js",
+		"type": "module"
 	},
 	"icons": {
 		"16": "src/icons/gw2-dark-16.png",
@@ -40,11 +38,5 @@
 	],
 	"content_security_policy": {
 		"extension_pages": "script-src 'self'; object-src 'self'"
-	},
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "gw2dark@ellielle",
-			"strict_min_version": "112.0"
-		}
 	}
 }
