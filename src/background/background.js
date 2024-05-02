@@ -1,3 +1,4 @@
+import "../browser-polyfill";
 // getGW2WikiTabs returns a Promise that resolves to an Array
 // of all browser tabs opened to the GW2 wiki
 async function getGW2WikiTabs() {
@@ -27,7 +28,6 @@ async function setColorModeInTabs(colorMode) {
   const gw2Tabs = await getGW2WikiTabs();
   if (gw2Tabs) {
     for (const tab of gw2Tabs) {
-      console.log("tab: ", tab);
       await browser.tabs.sendMessage(tab.id, colorMode);
     }
   }
@@ -85,22 +85,16 @@ const event_filter = {
 };
 
 browser.tabs.onUpdated.addListener(async (tabId, tabUrl, tab) => {
-  console.log("ON UPDATED DETAILS: ", tabId, tabUrl, tab);
   if (tabUrl.url.includes("guildwars2") && tabUrl.url.includes("wiki")) {
     let colorMode = await getColorMode();
-    console.log("color mode: ", colorMode.gw2Dark);
     await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
   }
 }, event_filter);
 
 browser.tabs.onCreated.addListener(async (tabId, tabUrl, tab) => {
-  console.log("ON CREATED DETAILS", tabId);
-  console.log("ON CREATED DETAILS", tabUrl);
-  console.log("ON CREATED DETAILS", tab);
   if (!tabUrl.url.includes("guildwars2") || tabUrl.url.includes("wiki")) {
     return;
   }
   let colorMode = await getColorMode();
-  console.log("color mode: ", colorMode.gw2Dark);
   await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
 });
