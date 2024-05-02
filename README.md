@@ -17,8 +17,6 @@ Alternatively, you can download the most recent file from the [Releases](INSERT 
 
 > Note: The Chrome extension isn't available on the store yet.
 
-> The Chrome version of 0.3.0 is not available yet
-
 <details>
 <summary>If you want to install and use anyway:</summary>
 <br>
@@ -52,15 +50,17 @@ To build the extension for yourself:
 
    - If you are new to or unfamiliar with git, reference GitHub's article on [cloning a repository](https://help.github.com/en/articles/cloning-a-repository).
 
-Firefox:
-
 2. Make a `zip` archive of the `src` folder and `manifest.json`
+
+Firefox:
 
 3. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`, and using the archive you just made.
 
 Chrome:
 
-TODO
+3. You only need the `src` folder and `manifest.json`, the rest can be moved or deleted.
+
+4. Install by going to `chrome:extensions`, clicking `Load unpacked`, and selecting the folder you cloned into.
 
 > If using WSL2, see their [documentation on WSL2 with GUI apps](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps).
 
