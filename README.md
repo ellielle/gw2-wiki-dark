@@ -11,13 +11,11 @@ If you are on a version lower than `0.3.0`, I recommend updating. This extension
 
 The addon can be [downloaded from its extension page](https://addons.mozilla.org/en-US/firefox/addon/gw2-wiki-dark-mode/).
 
-Alternatively, you can download the most recent file from the [Releases](INSERT URL) page. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`.
+Alternatively, you can download the most recent file from the [Releases](https://github.com/ellielle/gw2-wiki-dark/releases) page. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`.
 
 ## Chrome
 
 > Note: The Chrome extension isn't available on the store yet.
-
-> The Chrome version of 0.3.0 is not available yet
 
 <details>
 <summary>If you want to install and use anyway:</summary>
