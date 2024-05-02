@@ -41,6 +41,7 @@ If you don't want to install an extension, a more simple userscript can [can be 
 ## Known Issues
 
 - Only works on the English wiki currently.
+- Mangles some urls
 
 # Usage
 
