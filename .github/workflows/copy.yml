@@ -1,0 +1,21 @@
+name: Copy
+
+on:
+  workflow_dispatch:
+jobs:
+  copy:
+    name: Copy common files between Firefox and Chrome repos
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: CopyCat
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          src_path: /.
+          dst_path: /.
+          dst_owner: ellielle
+          dst_repo_name: gw2-wiki-dark
+          dst_branch: chrome
+          src_branch: main
+          exclude: */manifest.json/*
