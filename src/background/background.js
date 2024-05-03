@@ -63,6 +63,7 @@ browser.action.onClicked.addListener(async (tab) => {
   // Wake up background page so it can establish a connection without error
   let gettingPage = await browser.runtime.getBackgroundPage();
   await gettingPage;
+  console.log("getting page: ", gettingPage);
 
   // Only activate extension on GW2 wiki pages
   // This prevents it from changing the url on
@@ -84,7 +85,6 @@ const event_filter = {
 };
 
 browser.tabs.onUpdated.addListener(async (tabId, tabUrl, _) => {
-  console.log("onupdated");
   if (tabUrl.url.includes("guildwars2") && tabUrl.url.includes("wiki")) {
     let colorMode = await getColorMode();
     await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
