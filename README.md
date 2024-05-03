@@ -51,13 +51,16 @@ If you don't want to install an extension, a more simple userscript can [can be 
 - Mangles some urls
 - The mode can't be toggled using the action button in the Chrome version. It will need to be disabled when you don't want dark mode.
 
-# Usage
+# Build
 
 To build the extension for yourself:
 
-1. Clone the repository using git: `git clone https://github.com/ellielle/gw2-wiki-dark.git`
+1. Clone the repository using git:
 
-   - If you are new to or unfamiliar with git, reference GitHub's article on [cloning a repository](https://help.github.com/en/articles/cloning-a-repository).
+```bash
+git clone https://github.com/ellielle/gw2-wiki-dark.git
+cd gw2-wiki-dark
+```
 
 2. Make a `zip` archive of the `src` folder and `manifest.json`
 
@@ -65,11 +68,19 @@ Firefox:
 
 3. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`, and using the archive you just made.
 
+<div align="center">
+   <img src="https://i.imgur.com/dd6xgcY.png">
+</div>
+
 Chrome:
 
-3. You only need the `src` folder and `manifest.json`, the rest can be moved or deleted.
+3. Clone the Chrome repository using git: `git clone -b chrome https://github.com/ellielle/gw2-wiki-dark.git`
 
 4. Install by going to `chrome:extensions`, clicking `Load unpacked`, and selecting the folder you cloned into.
+
+<div align="center">
+   <img src="https://i.imgur.com/ZFHbKQJ.png">
+</div>
 
 > If using WSL2, see their [documentation on WSL2 with GUI apps](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps).
 
@@ -78,3 +89,7 @@ Chrome:
 ---
 
 Icon created by [/u/sylint19 on Reddit](https://www.reddit.com/r/Guildwars2/comments/cy7h5l/guild_wars_2_icebrood_saga_desktop_icons/), used and altered with permission.
+
+## Contributing
+
+If you would like to contribute, please fork the repository and open a pull request to the `main` branch. Follow the above instructions in [Build](#build).
