@@ -8,12 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Copy to Branches Action
-        uses: planetoftheweb/copy-to-branches@v1
-        env:
-          key: main
-          exclude: manifest.json
-          files: README.md ./src ./github
+      - name: CopyCat
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          src_path: /.
+          dst_path: /.
+          dst_owner: ellielle
+          dst_repo_name: gw2-wiki-dark
+          dst_branch: chrome
+          src_branch: main
+          exclude: */manifest.json/*
