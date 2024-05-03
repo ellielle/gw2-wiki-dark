@@ -1,0 +1,21 @@
+name: Copy
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  copy:
+    name: Copy common files between Firefox and Chrome repos
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Copy to Branches Action
+        uses: planetoftheweb/copy-to-branches@v1
+        env:
+          key: main
+          exclude: manifest.json
+          files: README.md ./src
