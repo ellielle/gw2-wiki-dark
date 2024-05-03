@@ -1,4 +1,3 @@
-import "../browser-polyfill";
 // getGW2WikiTabs returns a Promise that resolves to an Array
 // of all browser tabs opened to the GW2 wiki
 async function getGW2WikiTabs() {
@@ -84,14 +83,14 @@ const event_filter = {
   properties: ["url"],
 };
 
-browser.tabs.onUpdated.addListener(async (tabId, tabUrl, tab) => {
+browser.tabs.onUpdated.addListener(async (tabId, tabUrl, _) => {
   if (tabUrl.url.includes("guildwars2") && tabUrl.url.includes("wiki")) {
     let colorMode = await getColorMode();
     await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
   }
 }, event_filter);
 
-browser.tabs.onCreated.addListener(async (tabId, tabUrl, tab) => {
+browser.tabs.onCreated.addListener(async (tabId, tabUrl, _) => {
   if (!tabUrl.url.includes("guildwars2") || tabUrl.url.includes("wiki")) {
     return;
   }
