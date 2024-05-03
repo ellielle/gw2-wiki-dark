@@ -1,9 +1,7 @@
 name: Copy
 
 on:
-  pull_request:
-    branches: [main]
-
+  workflow_dispatch:
 jobs:
   copy:
     name: Copy common files between Firefox and Chrome repos
@@ -18,4 +16,4 @@ jobs:
         env:
           key: main
           exclude: manifest.json
-          files: README.md ./src
+          files: README.md ./src ./github
