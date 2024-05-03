@@ -80,10 +80,11 @@ browser.action.onClicked.addListener(async (tab) => {
 // listen for changes to the url in tabs that match
 // *://*.guildwars2.com/*
 const event_filter = {
-  properties: ["url"],
+  urls: ["*://*.guildwars2.com/*"],
 };
 
 browser.tabs.onUpdated.addListener(async (tabId, tabUrl, _) => {
+  console.log("onupdated");
   if (tabUrl.url.includes("guildwars2") && tabUrl.url.includes("wiki")) {
     let colorMode = await getColorMode();
     await browser.tabs.sendMessage(tabId, colorMode.gw2Dark);
