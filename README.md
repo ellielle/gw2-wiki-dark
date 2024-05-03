@@ -2,7 +2,7 @@
 
 This extension automatically sets the color theme for the [official GW2 wiki](https://wiki.guildwars2.com/wiki/Main_Page) to their Vector dark theme without needing to be logged in.
 
-I was tired of the blindingly white default skin for the wiki, but didn't want to have to sign in to use the dark theme.
+I was tired of the default skin hurting my eyes at night, and didn't want to have to make an account.
 
 > If you are on a version lower than `0.3.0`, I recommend updating. This extension no longer needs to be built and is no longer in TypeScript.
 
@@ -49,6 +49,7 @@ If you don't want to install an extension, a more simple userscript can [can be 
 
 - Only works on the English wiki currently.
 - Mangles some urls
+- The mode can't be toggled using the action button in the Chrome version. It will need to be disabled when you don't want dark mode.
 
 # Usage
 
