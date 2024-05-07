@@ -22,20 +22,9 @@ Alternatively, you can download the most recent file from the [Releases](https:/
 
 ## Chrome
 
-> Note: The Chrome extension isn't available on the store yet.
+The addon can be [downloaded from the Chrome store](https://chromewebstore.google.com/detail/gw2-wiki-dark-mode/mbjneadfmioclhiklaeimpaoggmgnnji)
 
-<details>
-<summary>If you want to install and use anyway:</summary>
-<br>
-
-1. Download the most current release, make sure to download `gw2-wiki-dark-chrome.zip`. Extract the files into an empty folder.
-
-2. In Chrome, go to `chrome://extensions` in your browser. In the top right, enable Developer Mode, and click "Load Unpacked Extension". Select the folder holding the files.
-
-3. After installation, make sure the extension is enabled. Reload any GW2 Wiki pages currently open.
-
-4. You may delete the folder and `.zip` file now.
-</details>
+> See below issue about the Chrome version
 
 ## UserScript
 
@@ -48,7 +37,9 @@ If you don't want to install an extension, a more simple userscript can [can be 
 ## Known Issues
 
 - Only works on the English wiki currently.
+
 - Mangles some urls
+
 - The mode can't be toggled using the action button in the Chrome version. It will need to be disabled when you don't want dark mode.
 
 # Build
