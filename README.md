@@ -20,6 +20,14 @@ The addon can be [downloaded from its extension page](https://addons.mozilla.org
 
 Alternatively, you can download the most recent file from the [Releases](https://github.com/ellielle/gw2-wiki-dark/releases) page. Install it by going to `about:addons`, clicking the cog in the upper right of the screen, and selecting `Install Add-On From File`.
 
+After installation, navigate to [a wiki page](https://wiki.guildwars2.com) and enable `Always Allow on wiki.guildwars2.com`.
+
+<div align="center">
+   <img src="https://i.imgur.com/yD1ncPZ.png" alt="allow permissions">
+</div>
+
+This will allow the addon to communicate to each wiki tab you may have open, to change your preference between dark/light.
+
 ## Chrome
 
 The addon can be [downloaded from the Chrome store](https://chromewebstore.google.com/detail/gw2-wiki-dark-mode/mbjneadfmioclhiklaeimpaoggmgnnji)
